@@ -1,7 +1,4 @@
 import java.util.Scanner;
-//import java.util.Arrays;
-
-
 
 public class Duke {
     public static void main(String[] args) {
@@ -20,20 +17,18 @@ public class Duke {
 
         Scanner in = new Scanner(System.in);
 
-        String[] userInput = new String[100];
+        String inputString;
         int inputCount=0;
         int outputCount=1;
-        int doneNumber=-1;
-        String[] isDone = new String[100];
+        int doneNumber=0;
+        Task[] taskArray = new Task[100];
 
-        String inputString;
         System.out.print("Type something: ");
         inputString = in.nextLine();
 
         while ( !inputString.equals("bye") ) {
             if ( !inputString.equals("list") && !inputString.contains("done")) {
-                userInput[inputCount] = inputString;
-                isDone[inputCount] = "✗";
+                taskArray[inputCount]= new Task(inputString);
                 inputCount++;
                 System.out.println("Added:" + inputString);
             }
@@ -41,19 +36,17 @@ public class Duke {
             if (inputString.equals("list")) {
                 System.out.println("Here are the tasks in your list: ");
                 while (outputCount<=inputCount) {
-                    System.out.println( outputCount + "." + "[" + isDone[outputCount-1] + "]" + userInput[outputCount-1] );
+                    System.out.println(outputCount+"."+"["+taskArray[outputCount-1].getStatusIcon()+"]"+taskArray[outputCount-1].discription);
                     outputCount++;
                 }
                 outputCount=1;
             }
 
             if (inputString.contains("done")) {
-                System.out.println("Nice! I've marked this task as done: ");
                 doneNumber = Integer.parseInt( inputString.substring(5) );
                 while (outputCount<=inputCount) {
                     if ( doneNumber == outputCount){
-                        isDone[outputCount-1] = "✓";
-                        System.out.println("[" + isDone[outputCount-1] + "]" + userInput[outputCount-1]);
+                        taskArray[outputCount-1].markAsDone();
                     }
                     outputCount++;
                 }
@@ -67,7 +60,6 @@ public class Duke {
 
         System.out.println("Bye. Hope to see you again soon!");
         System.out.println("____________________________________________________________");
-
 
     }
 }
