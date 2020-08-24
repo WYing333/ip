@@ -1,4 +1,7 @@
 import java.util.Scanner;
+//import java.util.Arrays;
+
+
 
 public class Duke {
     public static void main(String[] args) {
@@ -20,21 +23,38 @@ public class Duke {
         String[] userInput = new String[100];
         int inputCount=0;
         int outputCount=1;
+        int doneNumber=-1;
+        String[] isDone = new String[100];
 
-        String line;
+        String inputString;
         System.out.print("Type something: ");
-        line = in.nextLine();
+        inputString = in.nextLine();
 
-        while ( !line.equals("bye") ) {
-            if (!line.equals("list")) {
-                userInput[inputCount] = line;
+        while ( !inputString.equals("bye") ) {
+            if ( !inputString.equals("list") && !inputString.contains("done")) {
+                userInput[inputCount] = inputString;
+                isDone[inputCount] = "✗";
                 inputCount++;
-                System.out.println("Added:" + line);
+                System.out.println("Added:" + inputString);
             }
 
-            if (line.equals("list")) {
+            if (inputString.equals("list")) {
+                System.out.println("Here are the tasks in your list: ");
                 while (outputCount<=inputCount) {
-                    System.out.println( outputCount + "." + userInput[outputCount-1] );
+                    System.out.println( outputCount + "." + "[" + isDone[outputCount-1] + "]" + userInput[outputCount-1] );
+                    outputCount++;
+                }
+                outputCount=1;
+            }
+
+            if (inputString.contains("done")) {
+                System.out.println("Nice! I've marked this task as done: ");
+                doneNumber = Integer.parseInt( inputString.substring(5) );
+                while (outputCount<=inputCount) {
+                    if ( doneNumber == outputCount){
+                        isDone[outputCount-1] = "✓";
+                        System.out.println("[" + isDone[outputCount-1] + "]" + userInput[outputCount-1]);
+                    }
                     outputCount++;
                 }
                 outputCount=1;
@@ -42,7 +62,7 @@ public class Duke {
 
             System.out.println("____________________________________________________________");
             System.out.print("Type something: ");
-            line = in.nextLine();
+            inputString = in.nextLine();
         }
 
         System.out.println("Bye. Hope to see you again soon!");
