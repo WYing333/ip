@@ -22,8 +22,7 @@ public class Duke {
             if ( !inputString.equals("list") && !inputString.contains("done ")) {
                 if (inputString.contains("todo")) {
                     taskArray[inputCount]=new ToDo(inputString.replace("todo",""));
-                    System.out.println("Got it. I've added this task: ");
-                    System.out.println(taskArray[inputCount]);
+                    printMessage(taskArray[inputCount]);
                     inputCount++;
                     System.out.println("Now you have "+inputCount+" tasks in the list.");
                 }
@@ -32,8 +31,7 @@ public class Duke {
                     String[] inputDeadline=inputString.split("/");
                     taskArray[inputCount]=new Deadline(inputDeadline[0].replace("deadline",""),
                             inputDeadline[1].replace("by",""));
-                    System.out.println("Got it. I've added this task: ");
-                    System.out.println(taskArray[inputCount]);
+                    printMessage(taskArray[inputCount]);
                     inputCount++;
                     System.out.println("Now you have "+inputCount+" tasks in the list.");
                 }
@@ -42,8 +40,7 @@ public class Duke {
                     String[] inputEvent=inputString.split("/");
                     taskArray[inputCount]=new Event(inputEvent[0].replace("event",""),
                             inputEvent[1].replace("at",""));
-                    System.out.println("Got it. I've added this task: ");
-                    System.out.println(taskArray[inputCount]);
+                    printMessage(taskArray[inputCount]);
                     inputCount++;
                     System.out.println("Now you have "+inputCount+" tasks in the list.");
                 }
@@ -90,6 +87,11 @@ public class Duke {
         System.out.println("Bye. Hope to see you again soon!");
         printSeparator();
 
+    }
+
+    public static void printMessage(Task t) {
+        System.out.println("Got it. I've added this task: ");
+        System.out.println(t);
     }
 
     public static void showWelcomeScreen() {
