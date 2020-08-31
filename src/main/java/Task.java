@@ -1,9 +1,9 @@
 public class Task {
-    protected String discription;
+    protected String description;
     protected boolean isDone;
 
-    public Task(String discription) {
-        this.discription = discription;
+    public Task(String description) {
+        this.description = description;
         this.isDone = false;
     }
 
@@ -14,9 +14,13 @@ public class Task {
     public void markAsDone() {
         System.out.println("Nice! I've marked this task as done: ");
         this.isDone = true;
-        System.out.println("[" + this.getStatusIcon() + "]" + this.discription);
-
     }
+
+    @Override
+    public String toString() {
+        return "[" + this.getStatusIcon() + "]" + this.description;
+    }
+
 }
 
 
