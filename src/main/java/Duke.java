@@ -16,7 +16,6 @@ public class Duke {
         int inputCount=0;
         int outputCount=1;
 
-        System.out.print("Type something: ");
         String inputString = in.nextLine();
 
         while ( !inputString.equals("bye") ) {
@@ -26,8 +25,7 @@ public class Duke {
                     System.out.println("Got it. I've added this task: ");
                     System.out.println(taskArray[inputCount]);
                     inputCount++;
-                    System.out.println("Now you have"+inputCount+"tasks in the list.");
-                    printSeparator();
+                    System.out.println("Now you have "+inputCount+" tasks in the list.");
                 }
 
                 else if (inputString.contains("deadline")) {
@@ -37,8 +35,7 @@ public class Duke {
                     System.out.println("Got it. I've added this task: ");
                     System.out.println(taskArray[inputCount]);
                     inputCount++;
-                    System.out.println("Now you have"+inputCount+"tasks in the list.");
-                    printSeparator();
+                    System.out.println("Now you have "+inputCount+" tasks in the list.");
                 }
 
                 else if (inputString.contains("event")) {
@@ -48,8 +45,7 @@ public class Duke {
                     System.out.println("Got it. I've added this task: ");
                     System.out.println(taskArray[inputCount]);
                     inputCount++;
-                    System.out.println("Now you have"+inputCount+"tasks in the list.");
-                    printSeparator();
+                    System.out.println("Now you have "+inputCount+" tasks in the list.");
                 }
 
                 else {
@@ -88,7 +84,6 @@ public class Duke {
             }
 
             printSeparator();
-            System.out.print("Type something: ");
             inputString = in.nextLine();
         }
 
