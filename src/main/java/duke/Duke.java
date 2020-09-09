@@ -1,3 +1,13 @@
+package duke;
+
+import duke.exception.DukeException;
+import duke.exception.emptyException;
+import duke.exception.nonMatchException;
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Task;
+import duke.task.ToDo;
+
 import java.util.Scanner;
 
 public class Duke {
@@ -112,7 +122,7 @@ public class Duke {
 
         System.out.println("Hello from\n" + logo);
         printSeparator();
-        System.out.println("Hello! I'm Duke");
+        System.out.println("Hello! I'm Duke.Duke");
         System.out.println("What can I do for you?");
         printSeparator();
     }

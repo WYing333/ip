@@ -1,4 +1,4 @@
-package duke;
+package duke.exception;
 
 public class emptyException extends DukeException{
         public emptyException() {
