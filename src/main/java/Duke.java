@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class Duke {
 
+    public static final int MAX_TASK_NUM = 100;
+
     public static void printSeparator() {
         String separator="____________________________________________________________";
         System.out.println(separator);
@@ -12,7 +14,8 @@ public class Duke {
         showWelcomeScreen();
 
         Scanner in = new Scanner(System.in);
-        Task[] taskArray = new Task[100];
+
+        Task[] taskArray = new Task[MAX_TASK_NUM];
         int inputCount=0;
         int outputCount=1;
 
@@ -22,7 +25,7 @@ public class Duke {
             if ( !inputString.equals("list") && !inputString.contains("done ")) {
                 if (inputString.contains("todo")) {
                     taskArray[inputCount]=new ToDo(inputString.replace("todo",""));
-                    printMessage(taskArray[inputCount]);
+                    printSuccessfullyAddedMessage(taskArray[inputCount]);
                     inputCount++;
                     System.out.println("Now you have "+inputCount+" tasks in the list.");
                 }
@@ -31,7 +34,7 @@ public class Duke {
                     String[] inputDeadline=inputString.split("/");
                     taskArray[inputCount]=new Deadline(inputDeadline[0].replace("deadline",""),
                             inputDeadline[1].replace("by",""));
-                    printMessage(taskArray[inputCount]);
+                    printSuccessfullyAddedMessage(taskArray[inputCount]);
                     inputCount++;
                     System.out.println("Now you have "+inputCount+" tasks in the list.");
                 }
@@ -40,7 +43,7 @@ public class Duke {
                     String[] inputEvent=inputString.split("/");
                     taskArray[inputCount]=new Event(inputEvent[0].replace("event",""),
                             inputEvent[1].replace("at",""));
-                    printMessage(taskArray[inputCount]);
+                    printSuccessfullyAddedMessage(taskArray[inputCount]);
                     inputCount++;
                     System.out.println("Now you have "+inputCount+" tasks in the list.");
                 }
@@ -89,7 +92,7 @@ public class Duke {
 
     }
 
-    public static void printMessage(Task t) {
+    public static void printSuccessfullyAddedMessage(Task t) {
         System.out.println("Got it. I've added this task: ");
         System.out.println(t);
     }
