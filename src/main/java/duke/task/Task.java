@@ -18,6 +18,22 @@ public class Task {
         this.isDone = true;
     }
 
+    public void setDone(boolean value) {
+        isDone=value;
+    }
+
+    public boolean getDone() {
+        return isDone;
+    }
+
+    public String getName() {
+        return description;
+    }
+
+    public String writeToFile(){
+        return description;
+    }
+
     @Override
     public String toString() {
         return "[" + this.getStatusIcon() + "]" + this.description;

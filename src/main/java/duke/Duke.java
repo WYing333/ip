@@ -9,6 +9,10 @@ import duke.task.Task;
 import duke.task.ToDo;
 
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Duke {
 
@@ -20,6 +24,77 @@ public class Duke {
         System.out.println(separator);
     }
 
+    public static int readFile(Task[] tasks){
+        try {
+            int sum=0;
+            File f = new File("/Users/wendyw/Desktop/study/cz2006(cs2113)/ip/data/duke.txt");
+            Scanner s = new Scanner(f);
+            while(s.hasNext()){
+                String line=s.nextLine();
+                boolean isDone=false;
+                String[] sentences=line.split(" \\| ");
+                if (sentences[0].equals("T")){
+                    tasks[sum]=new ToDo(sentences[2]);
+                    if (sentences[1].equals("1")){
+                        isDone=true;
+                    }
+                    tasks[sum].setDone(isDone);
+                    sum++;
+                }
+                else if (sentences[0].equals("D")){
+                    tasks[sum]=new Deadline(sentences[2],sentences[3]);
+                    if (sentences[1].equals("1")){
+                        isDone=true;
+                    }
+                    tasks[sum].setDone(isDone);
+                    sum++;
+                }
+                else if (sentences[0].equals("E")){
+                    tasks[sum]=new Event(sentences[2],sentences[3]);
+                    if (sentences[1].equals("1")){
+                        isDone=true;
+                    }
+                    tasks[sum].setDone(isDone);
+                    sum++;
+                }
+            }
+            return sum;
+        }
+        catch (FileNotFoundException e){
+            System.out.println("\n\tThe file does not exist.\n");
+        }
+        return 0;
+    }
+
+    public static void writeFile(Task[] tasks, int sum){
+        try {
+            File f = new File("/Users/wendyw/Desktop/study/cz2006(cs2113)/ip/data/duke.txt");
+            clearFile();
+            FileWriter fw = new FileWriter(f);
+            for (int i = 0; i < sum; i++) {
+                fw.write(tasks[i].writeToFile()+"\n");
+            }
+            fw.close();
+        }
+        catch (IOException e){
+            System.out.println("\n\tTrouble with IO stream.\n");
+        }
+    }
+
+    public static void clearFile(){
+        try {
+            File f = new File("/Users/wendyw/Desktop/study/cz2006(cs2113)/ip/data/duke.txt");
+            FileWriter fw = new FileWriter(f);
+            fw.write("");
+            fw.flush();
+            fw.close();
+        }
+        catch (IOException e){
+            System.out.println("\n\tTrouble with IO stream.\n");
+        }
+    }
+
+
     public static void main(String[] args) {
 
         showWelcomeScreen();
@@ -28,6 +103,7 @@ public class Duke {
         String inputString;
         String input;
 
+        int sumList=readFile(taskArray);
 
         do {
             Scanner in = new Scanner(System.in);
@@ -118,6 +194,8 @@ public class Duke {
             printSeparator();
 
         }while ( !inputString.equals("bye") );
+
+        writeFile(taskArray,sumList);
 
         System.out.println("Bye. Hope to see you again soon!");
         printSeparator();
