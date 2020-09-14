@@ -14,7 +14,6 @@ public class Duke {
 
     public static final int MAX_TASK_NUM = 100;
     public static Task[] taskArray = new Task[MAX_TASK_NUM];
-    public static int taskCount=0;
 
     public static void printSeparator() {
         String separator="____________________________________________________________";
@@ -92,6 +91,24 @@ public class Duke {
                     inputCount++;
                     System.out.println("Now you have " + inputCount + " tasks in the list.");
                 }
+                else if(inputString.contains("delete ")) {
+                    String[] deleteWords = inputString.split(" ");
+                    int deleteNumber = Integer.parseInt(deleteWords[1]);
+                    while (outputCount <= inputCount) {
+                        if (deleteNumber == outputCount) {
+                            System.out.println("Noted. I've removed this task:");
+                            System.out.println(taskArray[deleteNumber - 1]);
+                            for (int i = deleteNumber - 1; i < inputCount - 1; i++) {
+                                taskArray[i] = taskArray[i + 1];
+                            }
+                            //taskArray[inputCount - 1] = null;
+                            inputCount--;
+                            System.out.println("Now you have " + inputCount + " tasks in the list.");
+                        }
+                        outputCount++;
+                    }
+                    outputCount = 1;
+                }
                 else if(!input.equals("bye")) {
                     try {
                         throw new nonMatchException();
@@ -99,7 +116,6 @@ public class Duke {
                     }
                 }
             printSeparator();
-            //inputString = in.nextLine();
 
         }while ( !inputString.equals("bye") );
 
