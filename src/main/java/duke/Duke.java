@@ -9,6 +9,7 @@ import duke.task.Task;
 import duke.task.ToDo;
 
 import java.util.Scanner;
+//import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -18,6 +19,7 @@ public class Duke {
 
     public static final int MAX_TASK_NUM = 100;
     public static Task[] taskArray = new Task[MAX_TASK_NUM];
+    //ArrayList<Task> tasks = new ArrayList<>();
 
     public static void printSeparator() {
         String separator="____________________________________________________________";
