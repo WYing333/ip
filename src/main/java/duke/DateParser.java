@@ -17,7 +17,7 @@ public class DateParser {
             DateTimeFormatter.ofPattern("yyyy MM dd") );
 
     /**
-     * Makes a given string following one of the accepted format into date-time format
+     * Transfers a given string following one of the accepted format into date-time format
      * @param in String input to be transferred
      * @return time in the form of LocalDateTime or null if no String in is found
      */

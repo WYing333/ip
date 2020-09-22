@@ -18,7 +18,7 @@ public class Task {
     }
 
     /**
-     * Marks the specific task as Done.
+     * Marks the specific task as Done and prints the message to notify the users.
      */
     public void markAsDone() {
         System.out.println("Nice! I've marked this task as done: ");
@@ -43,7 +43,7 @@ public class Task {
 
     /**
      * Gets the description of the specific task.
-     * @return the description of the specific task.
+     * @return String which is the description of the specific task.
      */
     public String getName() {
         return description;

@@ -73,7 +73,7 @@ public class Duke {
     /**
      * Prints the successfully added message to users.
      * @param tasks the ArrayList of Task class used in the whole program.
-     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     * @param numOfTasks the total number of tasks in the ArrayList of Task--tasks.
      */
     public static void printSuccessfullyAddedMessage (ArrayList<Task> tasks, int numOfTasks) {
         System.out.println("Got it. I've added this task: ");
@@ -128,7 +128,7 @@ public class Duke {
     }
 
     /**
-     * Deals with the input from the uses and the file and reacts from the input.
+     * Deals with the input from the uses and the file and reacts to the input.
      * @param input the input string from the users and the file.
      */
     public static void parse (String input) {
@@ -169,7 +169,7 @@ public class Duke {
 
     /**
      * Lists all the tasks to the users.
-     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     * @param numOfTasks the total number of tasks in the ArrayList of Task--tasks.
      * @param tasks the ArrayList of Task class used in the whole program.
      */
     public static void list(int numOfTasks, ArrayList<Task> tasks) {
@@ -189,7 +189,7 @@ public class Duke {
      * Adds task to the ArrayList of Task--tasks.
      * @param input the input string from the users and the file.
      * @param tasks the ArrayList of Task class used in the whole program.
-     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     * @param numOfTasks the total number of tasks in the ArrayList of Task--tasks.
      */
     public static void addTask (String input, ArrayList<Task> tasks, int numOfTasks) {
         tasks.add(new Task(input));
@@ -199,7 +199,7 @@ public class Duke {
 
     /**
      * Deletes task from the ArrayList of Task--tasks.
-     * @param input the input string from the users and the file.
+     * @param input the input string from the users.
      */
     public static void deleteTask (String input) {
         int dividerPosition = input.indexOf(" ");
@@ -216,7 +216,7 @@ public class Duke {
      * Adds ToDo task from the users and the file to the ArrayList of Task--tasks.
      * @param in the input string from the users and the file.
      * @param tasks the ArrayList of Task class used in the whole program.
-     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     * @param numOfTasks the total number of tasks in the ArrayList of Task--tasks.
      */
     public static void addToDo(String in, ArrayList<Task> tasks, int numOfTasks) {
         boolean isFromFile = in.startsWith("T");
@@ -242,7 +242,7 @@ public class Duke {
      * Adds Deadline task from the users and the file to the ArrayList of Task--tasks.
      * @param in the input string from the users and the file.
      * @param tasks the ArrayList of Task class used in the whole program.
-     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     * @param numOfTasks the total number of tasks in the ArrayList of Task--tasks.
      */
     public static void addDeadline(String in, ArrayList<Task> tasks, int numOfTasks) {
         boolean isFromFile = in.startsWith("D");
@@ -271,7 +271,7 @@ public class Duke {
      * Adds Event task from the users and the file to the ArrayList of Task--tasks.
      * @param in the input string from the users and the file.
      * @param tasks the ArrayList of Task class used in the whole program.
-     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     * @param numOfTasks the total number of tasks in the ArrayList of Task--tasks.
      */
     public static void addEvent(String in, ArrayList<Task> tasks, int numOfTasks) {
         boolean isFromFile = in.startsWith("E");
@@ -297,7 +297,7 @@ public class Duke {
 
     /**
      * Marks the specific task as Done.
-     * @param in the input string from the users and the file.
+     * @param in the input string from the users.
      * @param tasks the ArrayList of Task class used in the whole program.
      */
     public static void markDone(String in, ArrayList<Task> tasks) {
@@ -324,7 +324,7 @@ public class Duke {
     }
 
     /**
-     * Prints things that are related to "bye".
+     * Prints things that are related to exit the program.
      */
     public static void bye() {
         writeFile("data/duke.txt");
