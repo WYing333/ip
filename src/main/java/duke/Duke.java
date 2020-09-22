@@ -127,13 +127,17 @@ public class Duke {
                 numOfTasks++;
             } else if (input.contains("delete")) {
                 deleteTask(input);
+            } else if (input.contains("find ")) {
+                find(input);
             } else {
                 throw new nonMatchException();
             }
         } catch (nonMatchException e) {
             System.out.println("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+            printSeparator();
         }catch (emptyException ex) {
             System.out.println("☹ OOPS!!! The description of a task cannot be empty.");
+            printSeparator();
         }
     }
 
@@ -224,8 +228,8 @@ public class Duke {
         }
         else {
             String[] inputEvent = in.split("/");
-            tasks.add(new Deadline(inputEvent[0].replace("deadline", ""),
-                    inputEvent[1].replace("by", "")));
+            tasks.add(new Event(inputEvent[0].replace("event", ""),
+                    inputEvent[1].replace("at", "")));
         }
         tasks.get(numOfTasks).setDone(isDone);
         printSuccessfullyAddedMessage(tasks, numOfTasks);
@@ -238,8 +242,16 @@ public class Duke {
         int i = Integer.parseInt(number);
         i = i - 1;
         tasks.get(i).markAsDone();
-        System.out.println("Nice! I've marked this task as done: ");
         System.out.println(tasks.get(i).toString());
+        printSeparator();
+    }
+
+    public static void find(String in) {
+        String findName = in.replace("find", "");
+        tasks.stream()
+                .filter(t -> t.getName().contains(findName))
+                .findAny()
+                .ifPresent(System.out::println);
         printSeparator();
     }
 
