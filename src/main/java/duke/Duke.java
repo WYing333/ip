@@ -45,6 +45,9 @@ public class Duke {
     }
 
 
+    /**
+     * Shows the welcome screen of the Duke.
+     */
     public static void showWelcomeScreen() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -59,11 +62,19 @@ public class Duke {
         printSeparator();
     }
 
+    /**
+     * Prints the line separator to make the output cleaner to users.
+     */
     public static void printSeparator() {
         String separator="____________________________________________________________";
         System.out.println(separator);
     }
 
+    /**
+     * Prints the successfully added message to users.
+     * @param tasks the ArrayList of Task class used in the whole program.
+     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     */
     public static void printSuccessfullyAddedMessage (ArrayList<Task> tasks, int numOfTasks) {
         System.out.println("Got it. I've added this task: ");
         System.out.println(tasks.get(numOfTasks).toString());
@@ -71,6 +82,10 @@ public class Duke {
         printSeparator();
     }
 
+    /**
+     * Opens the file--duke.txt.
+     * @throws FileNotFoundException If the file is not found.
+     */
     public static void openFile() throws FileNotFoundException {
         File f = new File("data/duke.txt");
         Scanner s = new Scanner(f);
@@ -79,6 +94,10 @@ public class Duke {
         }
     }
 
+    /**
+     * Writes to the file--duke.txt.
+     * @param filePath path of the file--duke.txt.
+     */
     private static void writeFile(String filePath) {
         clearFile();
         try {
@@ -92,6 +111,9 @@ public class Duke {
         }
     }
 
+    /**
+     * Clears the file.
+     */
     public static void clearFile(){
         try {
             File f = new File("data/duke.txt");
@@ -105,6 +127,10 @@ public class Duke {
         }
     }
 
+    /**
+     * Deals with the input from the uses and the file and reacts from the input.
+     * @param input the input string from the users and the file.
+     */
     public static void parse (String input) {
         try {
             if(input.equals("done") || input.equals("todo") || input.equals("event") || input.equals("deadline")){
@@ -141,6 +167,11 @@ public class Duke {
         }
     }
 
+    /**
+     * Lists all the tasks to the users.
+     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     * @param tasks the ArrayList of Task class used in the whole program.
+     */
     public static void list(int numOfTasks, ArrayList<Task> tasks) {
         if (numOfTasks == 0) {
             System.out.println("Your list is empty.");
@@ -154,12 +185,22 @@ public class Duke {
         printSeparator();
     }
 
+    /**
+     * Adds task to the ArrayList of Task--tasks.
+     * @param input the input string from the users and the file.
+     * @param tasks the ArrayList of Task class used in the whole program.
+     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     */
     public static void addTask (String input, ArrayList<Task> tasks, int numOfTasks) {
         tasks.add(new Task(input));
         System.out.println("added: " + tasks.get(numOfTasks).getName());
         numOfTasks++;
     }
 
+    /**
+     * Deletes task from the ArrayList of Task--tasks.
+     * @param input the input string from the users and the file.
+     */
     public static void deleteTask (String input) {
         int dividerPosition = input.indexOf(" ");
         int index = Integer.parseInt(input.substring(dividerPosition+1)) - 1;
@@ -171,6 +212,12 @@ public class Duke {
         printSeparator();
     }
 
+    /**
+     * Adds ToDo task from the users and the file to the ArrayList of Task--tasks.
+     * @param in the input string from the users and the file.
+     * @param tasks the ArrayList of Task class used in the whole program.
+     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     */
     public static void addToDo(String in, ArrayList<Task> tasks, int numOfTasks) {
         boolean isFromFile = in.startsWith("T");
         boolean isDone = false;
@@ -191,6 +238,12 @@ public class Duke {
         numOfTasks++;
     }
 
+    /**
+     * Adds Deadline task from the users and the file to the ArrayList of Task--tasks.
+     * @param in the input string from the users and the file.
+     * @param tasks the ArrayList of Task class used in the whole program.
+     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     */
     public static void addDeadline(String in, ArrayList<Task> tasks, int numOfTasks) {
         boolean isFromFile = in.startsWith("D");
         boolean isDone = false;
@@ -214,6 +267,12 @@ public class Duke {
         numOfTasks++;
     }
 
+    /**
+     * Adds Event task from the users and the file to the ArrayList of Task--tasks.
+     * @param in the input string from the users and the file.
+     * @param tasks the ArrayList of Task class used in the whole program.
+     * @param numOfTasks the total number of the ArrayList of Task--tasks.
+     */
     public static void addEvent(String in, ArrayList<Task> tasks, int numOfTasks) {
         boolean isFromFile = in.startsWith("E");
         boolean isDone = false;
@@ -236,6 +295,11 @@ public class Duke {
         numOfTasks++;
     }
 
+    /**
+     * Marks the specific task as Done.
+     * @param in the input string from the users and the file.
+     * @param tasks the ArrayList of Task class used in the whole program.
+     */
     public static void markDone(String in, ArrayList<Task> tasks) {
         int dividerPosition = in.indexOf(" ");
         String number = in.substring(dividerPosition+1);
@@ -246,6 +310,10 @@ public class Duke {
         printSeparator();
     }
 
+    /**
+     * Finds the specific string provided by the users from the ArrayList of Task--tasks.
+     * @param in the input string from the users.
+     */
     public static void find(String in) {
         String findName = in.replace("find", "");
         tasks.stream()
@@ -255,6 +323,9 @@ public class Duke {
         printSeparator();
     }
 
+    /**
+     * Prints things that are related to "bye".
+     */
     public static void bye() {
         writeFile("data/duke.txt");
         System.out.println("Bye. Hope to see you again soon!");

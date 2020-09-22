@@ -15,6 +15,10 @@ public class Deadline extends Task {
         time = DateParser.parseDate(by.trim());
     }
 
+    /**
+     * Writes to the file in the specific format.
+     * @return the formatted string of Deadline task that will be stored in the file.
+     */
     public String writeToFile() {
         String done="0";
         if (super.getDone()) done="1";
