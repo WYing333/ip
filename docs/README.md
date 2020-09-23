@@ -196,13 +196,12 @@ Bye. Hope to see you again soon!
 |Command | Description|
 |:------------:|:------------|
 |todo | ```todo <todo description>```|
-|event | ```event <event description> /at <date time>```|
-|deadline | ```deadline <deadline description> /by <date time>```|
+|event | ```event <event description> /at <date>```|
+|deadline | ```deadline <deadline description> /by <date>```|
 |list | ```list```|
 |done | ```done <index>```|
 |delete | ```delete <index>```|
-|find | ```find <key phrase>```|
-|doneby | ```doneby <date time>```|
+|find | ```find <key word>```|
 |bye| ```bye```|
 
 ## 5. Additional Notes
