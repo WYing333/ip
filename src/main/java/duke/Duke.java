@@ -30,7 +30,7 @@ public class Duke {
             openFile();
         } catch (FileNotFoundException e) {
             try {
-                File f = new File("data/duke.txt");
+                File f = new File("duke.txt");
                 if (f.createNewFile()) {
                     System.out.println("Create a new file.");
                 }
@@ -87,7 +87,7 @@ public class Duke {
      * @throws FileNotFoundException If the file is not found.
      */
     public static void openFile() throws FileNotFoundException {
-        File f = new File("data/duke.txt");
+        File f = new File("duke.txt");
         Scanner s = new Scanner(f);
         while (s.hasNext()) {
             parse(s.nextLine());
@@ -116,7 +116,7 @@ public class Duke {
      */
     public static void clearFile(){
         try {
-            File f = new File("data/duke.txt");
+            File f = new File("duke.txt");
             FileWriter fw = new FileWriter(f);
             fw.write("");
             fw.flush();
@@ -327,7 +327,7 @@ public class Duke {
      * Prints things that are related to exit the program.
      */
     public static void bye() {
-        writeFile("data/duke.txt");
+        writeFile("duke.txt");
         System.out.println("Bye. Hope to see you again soon!");
         printSeparator();
         isTerminated = true;
