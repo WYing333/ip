@@ -26,6 +26,15 @@ public class Task {
     }
 
     /**
+     * Makes the task complete by setting the isDone to be true.
+     * @return the changed Task.
+     */
+    public Task completeTask() {
+        this.isDone = true;
+        return this;
+    }
+
+    /**
      * Set the specific task as Done.
      * @param value the status of the specific task.
      */

@@ -27,6 +27,7 @@ public class DateParser {
             try {
                 return LocalDate.parse(in, df).atStartOfDay();
             } catch (DateTimeParseException e) {
+
             }
         }
 

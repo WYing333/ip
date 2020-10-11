@@ -192,21 +192,19 @@ Expected outcome:
 Bye. Hope to see you again soon!
 ```
 
-## 4. Command Summary
-|Command | Description|
-|:------------:|:------------|
-|todo | ```todo <todo description>```|
-|event | ```event <event description> /at <date>```|
-|deadline | ```deadline <deadline description> /by <date>```|
-|list | ```list```|
-|done | ```done <index>```|
-|delete | ```delete <index>```|
-|find | ```find <key word>```|
-|bye| ```bye```|
-
 ## 5. Additional Notes
-Here are all 3 valid formats.
+1) Here are all 3 valid formats.
     
     `yyyyMMdd`
     `yyyy-MM-dd`
     `yyyy MM dd`
+
+2) For windows machine, need to configure the terminal 
+to get the "✓" instead of the "?".
+
+      type `chcp 65001`in your cmd
+
+      then try run jar by: `java -Dfile.encoding=UTF-8 -jar ip.jar`
+   
+3) Due to the implementation of the DateParse, if the time provided by user is invalid time, 
+then the null will be returned instead of the invalid string.
