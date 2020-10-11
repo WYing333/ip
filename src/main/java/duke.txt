@@ -1,3 +1,0 @@
-T | 0 |  go home
-D | 0 |  ip submission  |  20190808
-T | 1 |  go out to play

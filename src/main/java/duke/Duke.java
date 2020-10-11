@@ -22,7 +22,6 @@ public class Duke {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
-
         UI.showWelcomeScreen();
 
         try {
@@ -37,10 +36,12 @@ public class Duke {
                 System.out.println("Unable to create file.");
             }
         }
+
         while (!isTerminated) {
             String input = in.nextLine();
             parse(input);
         }
+        writeFile("duke.txt");
     }
 
     /**
@@ -53,6 +54,7 @@ public class Duke {
         while (s.hasNext()) {
             parse(s.nextLine());
         }
+
     }
 
     /**
@@ -62,15 +64,13 @@ public class Duke {
     private static void writeFile(String filePath) {
         clearFile();
         try {
-            FileWriter fw = new FileWriter(filePath,false);//to not overwrite the file, set to true.
-            fw.write("\n");
+            FileWriter fw = new FileWriter(filePath);
             for (int i = 0; i < tasks.size(); i++) {
                 fw.write(tasks.get(i).writeToFile()+"\n");
             }
             fw.close();
         }catch (IOException e){
             UI.messageSavingError();
-            System.out.println("\n\tTrouble with IO stream.\n");
         }
     }
 
@@ -95,41 +95,40 @@ public class Duke {
      * @param input the input string from the users and the file.
      */
     public static void parse (String input) {
-        while  (!input.equals("bye")) {
-            try {
-                if(input.equals("done") || input.equals("todo") || input.equals("event") || input.equals("deadline")){
-                    throw new emptyException();
-                } else if (input.equals("list")) {
-                    UI.list(numOfTasks, tasks);
-                } else if (input.contains("done")) {
-                    UI.markDone(input, tasks);
-                } else if (input.contains("todo")||input.startsWith("T")) {
-                    UI.addToDo(input, tasks, numOfTasks);
-                    numOfTasks++;
-                } else if (input.contains("deadline")||input.startsWith("D")) {
-                    UI.addDeadline(input, tasks, numOfTasks);
-                    numOfTasks++;
-                } else if (input.contains("event")||input.startsWith("E")) {
-                    UI.addEvent(input, tasks, numOfTasks);
-                    numOfTasks++;
-                } else if (input.contains("delete")) {
-                    deleteTask(input);
-                } else if (input.contains("find ")) {
-                    find(input);
-                } else {
-                    throw new nonMatchException();
-                }
-            } catch (StringIndexOutOfBoundsException e) {
-                UI.messageStringIndexOutOfBoundsException();
-            } catch (nonMatchException e) {
-                UI.messageInvalidCommand();
-            }catch (emptyException ex) {
-                UI.messageSavingError();
+        try {
+            if(input.equals("done") || input.equals("todo") || input.equals("event") || input.equals("deadline")){
+                throw new emptyException();
             }
+            if (input.equals("bye")) {
+                isTerminated = true;
+                UI.bye();
+            } else if (input.equals("list")) {
+                UI.list(numOfTasks, tasks);
+            } else if (input.contains("done")) {
+                UI.markDone(input, tasks);
+            } else if (input.startsWith("todo")||input.startsWith("T")) {
+                UI.addToDo(input, tasks, numOfTasks);
+                numOfTasks++;
+            } else if (input.startsWith("deadline")||input.startsWith("D")) {
+                UI.addDeadline(input, tasks, numOfTasks);
+                numOfTasks++;
+            } else if (input.startsWith("event")||input.startsWith("E")) {
+                UI.addEvent(input, tasks, numOfTasks);
+                numOfTasks++;
+            } else if (input.startsWith("delete")) {
+                deleteTask(input);
+            } else if (input.startsWith("find ")) {
+                find(input);
+            } else {
+                throw new nonMatchException();
+            }
+        } catch (StringIndexOutOfBoundsException e) {
+            UI.messageStringIndexOutOfBoundsException();
+        } catch (nonMatchException e) {
+            UI.messageInvalidCommand();
+        }catch (emptyException ex) {
+            UI.messageSavingError();
         }
-        writeFile("duke.txt");
-        isTerminated = true;
-        UI.bye();
     }
 
     /**

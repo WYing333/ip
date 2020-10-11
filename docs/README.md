@@ -76,7 +76,7 @@ Example 1
 Expected outcome:
 ```
 Got it. I've added this task:
-[E][✘] CS2113 tutorial (at: 2020-02-02T00:00)
+[E][✘] CS2113 tutorial (at: 2020-02-02)
 ```
 
 Example 2
@@ -85,7 +85,7 @@ Example 2
 Expected outcome:
 ```
 Got it. I've added this task:
-[E][✘] CS2113 quiz (at: null)
+[E][✘] CS2113 quiz (at: Monday)
 ```
 
 ### 3.3 Add Deadline: `deadline`
@@ -105,7 +105,7 @@ Example
 Expected outcome:
 ```
 Got it. I've added this task:
-[D][✘] IP submission (by: 2019-03-02T00:00)
+[D][✘] IP submission (by: 2019-03-02)
 ```
 
 Example 
@@ -114,7 +114,7 @@ Example
 Expected outcome:
 ```
 Got it. I've added this task:
-[D][✘] go out to eat (by: null)
+[D][✘] go out to eat (by: today)
 ```
 
 ### 3.4 List All Tasks: `list`
@@ -128,7 +128,7 @@ Example
 Expected outcome:
 ```
 1. [T][✘] return books
-2. [E][✘] CS2113 tutorial (at: 2020-02-02T00:00)
+2. [E][✘] CS2113 tutorial (at: 2020-02-02)
 ```
 
 ### 3.5 Mark as Done: `done`
@@ -177,7 +177,7 @@ Example
 
 Expected outcome:
 ```
-1. [E][✘] CS2113 tutorial (at: 2020-02-02T00:00)
+1. [E][✘] CS2113 tutorial (at: 2020-02-02)
 ```
 
 ### 3.8 Exit the program: `bye`
@@ -204,5 +204,3 @@ to get the "✓" instead of the "?".
       type "chcp 65001"in your cmd
       then try run jar by: "java -Dfile.encoding=UTF-8 -jar ip.jar"
       
-3) Due to the implementation of the DateParse, if the time provided by user is invalid time, 
-then the null will be returned instead of the invalid string.

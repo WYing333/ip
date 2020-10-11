@@ -135,11 +135,10 @@ public class UI {
             tasks.add(new Deadline(sentences[2],sentences[3]));
         }
         else{
-            String descriptionOfDeadline;
-            String by;
-            descriptionOfDeadline = in.substring(9, (in.indexOf("/") - 1));
-            by = in.substring((in.indexOf("/") + 4));
-            tasks.add(new Deadline(descriptionOfDeadline, by));
+            String[] inputDeadline = in.split("/");
+            tasks.add(new Deadline(inputDeadline[0].replace("deadline", ""),
+                    inputDeadline[1].replace("by", "")));
+
         }
 
         tasks.get(numOfTasks).setDone(isDone);
@@ -166,11 +165,10 @@ public class UI {
             tasks.add(new Event(sentences[2],sentences[3]));
         }
         else {
-            String descriptionOfEvent;
-            String at;
-            descriptionOfEvent = in.substring(6, (in.indexOf("/") - 1));
-            at = in.substring((in.indexOf("/") + 4));
-            tasks.add(new Event(descriptionOfEvent, at));
+            String[] inputEvent = in.split("/");
+            tasks.add(new Event(inputEvent[0].replace("event", ""),
+                    inputEvent[1].replace("at", "")));
+
         }
         tasks.get(numOfTasks).setDone(isDone);
         printSuccessfullyAddedMessage(tasks, numOfTasks);
@@ -212,4 +210,5 @@ public class UI {
         System.out.println("Bye. Hope to see you again soon!");
         UI.printSeparator();
     }
+
 }

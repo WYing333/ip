@@ -21,16 +21,17 @@ public class DateParser {
      * @param in String input to be transferred
      * @return time in the form of LocalDateTime or null if no String in is found
      */
-    public static LocalDateTime parseDate(String in) {
+    public static String parseDate(String in) {
 
         for(DateTimeFormatter df : dformaters) {
             try {
-                return LocalDate.parse(in, df).atStartOfDay();
+                DateTimeFormatter df2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                return df2.format(LocalDate.parse(in, df));
             } catch (DateTimeParseException e) {
 
             }
         }
 
-        return null;
+        return in;
     }
 }
