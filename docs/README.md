@@ -22,8 +22,7 @@
     
     3.8 [Exit the program: `bye`](#39-exit-the-program-bye)
     
-4. [Command summary](#4-command-summary)
-5. [Additional Notes](#5-additional notes)
+4. [Additional Notes](#5-additional notes)
 
 
 ## 1. Introduction
@@ -192,7 +191,7 @@ Expected outcome:
 Bye. Hope to see you again soon!
 ```
 
-## 5. Additional Notes
+## 4. Additional Notes
 1) Here are all 3 valid formats.
     
     `yyyyMMdd`
