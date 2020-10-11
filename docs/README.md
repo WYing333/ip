@@ -201,17 +201,8 @@ Bye. Hope to see you again soon!
 2) For windows machine, need to configure the terminal 
 to get the "✓" instead of the "?".
 
-      type 
+      type "chcp 65001"in your cmd
+      then try run jar by: "java -Dfile.encoding=UTF-8 -jar ip.jar"
       
-      `chcp 65001`
-      
-      in your cmd
-
-
-      then try run jar by: 
-      
-      `java -Dfile.encoding=UTF-8 -jar ip.jar`
-      
-   
 3) Due to the implementation of the DateParse, if the time provided by user is invalid time, 
 then the null will be returned instead of the invalid string.
